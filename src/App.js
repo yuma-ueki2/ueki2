@@ -33,9 +33,17 @@ const reducer = (state, action) => {
 };
 
 async function createNewTodo() {
-  const todo = { name: "Use AWS AppSync", description: "RealTime and Offline" };
+  const todo = { name: "Use c", description: "RealTime and Offline" };
   await API.graphql(graphqlOperation(createTodo, { input: todo }));
 }
+
+
+
+function setInput(key, value) {
+  setFormState({ ...formState, [key]: value })
+}
+
+
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -59,6 +67,9 @@ function App() {
 
   return (
     <div className="App">
+
+<input type="text" id="nameText"></input>
+      
       <button onClick={createNewTodo}>Add Todo</button>
       <div>
         {state.todos.length > 0 ? 
@@ -66,6 +77,8 @@ function App() {
           <p>Add some todos!</p> 
         }
       </div>
+
+
     </div>
   );
 }
