@@ -32,16 +32,14 @@ const reducer = (state, action) => {
   }
 };
 
+const txt1 = document.getElementById('nameText');
+
+
 async function createNewTodo() {
-  const todo = { name: "Use c", description: "RealTime and Offline" };
+  const todo = { name: txt1, description: "RealTime and Offline" };
   await API.graphql(graphqlOperation(createTodo, { input: todo }));
 }
 
-
-
-function setInput(key, value) {
-  setFormState({ ...formState, [key]: value })
-}
 
 
 
@@ -68,15 +66,19 @@ function App() {
   return (
     <div className="App">
 
-<input type="text" id="nameText"></input>
+<label>名前：<input type="text" id="nameText" ></input></label>
+
       
       <button onClick={createNewTodo}>Add Todo</button>
+
       <div>
         {state.todos.length > 0 ? 
           state.todos.map((todo) => <p key={todo.id}>{todo.name} : {todo.description}</p>) :
           <p>Add some todos!</p> 
         }
       </div>
+      
+      
     </div>
   );
 }
