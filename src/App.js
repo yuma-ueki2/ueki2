@@ -77,8 +77,6 @@ function App() {
           <p>Add some todos!</p> 
         }
       </div>
-
-
     </div>
   );
 }
